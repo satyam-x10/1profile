@@ -23,7 +23,7 @@ export function Profile() {
           </div>
 
         </div>
-        <button className="float-end border p-2 rounded-xl" onClick={() => { setOpen(true) }} >Add new Link</button>
+        <button className="float-end border p-2 rounded-xl m-2" onClick={() => { setOpen(true) }} >Add new Link</button>
         <div>
           {open && (
             <div className="w-full h-full" >
