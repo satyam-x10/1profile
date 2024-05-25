@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <button className="fixed top-5 right-5 border  rounded-md p-2" onClick={()=>signOut()} >Signout</button>
+      
       <div>
         {
           session ? (
