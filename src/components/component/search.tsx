@@ -1,5 +1,4 @@
-
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 export function Search() {
   return (
@@ -8,7 +7,10 @@ export function Search() {
         <h2 className="text-2xl font-bold mb-4 dark:text-white">User Search</h2>
         <form className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="name">
+            <label
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              htmlFor="name"
+            >
               Name
             </label>
             <input
@@ -19,7 +21,10 @@ export function Search() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="email">
+            <label
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              htmlFor="email"
+            >
               Email
             </label>
             <input
@@ -30,7 +35,10 @@ export function Search() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="phone">
+            <label
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              htmlFor="phone"
+            >
               Phone
             </label>
             <input
@@ -41,7 +49,10 @@ export function Search() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300" htmlFor="profile">
+            <label
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              htmlFor="profile"
+            >
               Profile Link
             </label>
             <input
@@ -52,11 +63,13 @@ export function Search() {
             />
           </div>
         </form>
-        <Button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded" type="submit">
+        <Button
+          className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
+          type="submit"
+        >
           Search
         </Button>
       </div>
-      
     </div>
-  )
+  );
 }

@@ -1,13 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const PlatformSchema = new Schema({
-  Platform_name: {
-    type: String,
-    required: true,
-  },
-});
-
 const userSchema = new Schema({
   name: {
     type: String,
@@ -23,10 +16,12 @@ const userSchema = new Schema({
     type: Number,
     required: false,
   },
-  List: {
-    type: [PlatformSchema],
+  adress: {
+    type: String,
     required: false,
   },
 });
 
-module.exports = mongoose.models.User || mongoose.model("User", userSchema);
+const User = mongoose.models.User || mongoose.model("User", userSchema);
+
+export default User;
