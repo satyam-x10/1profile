@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Platforms from "../../../public/platforms";
 import { set } from "mongoose";
-
+import { useSession } from "next-auth/react";
 export function AddLink({ onClose }: { onClose: any }) {
   const [platform, setPlatform] = useState("");
   const [link, setLink] = useState("");
@@ -68,12 +68,12 @@ export function AddLink({ onClose }: { onClose: any }) {
 export function AddInfo({ onClose, User }) {
   const [loading, setLoading] = useState(false);
   const [uploaded, setUploaded] = useState(false);
-
+  const { data: session } = useSession();
   const [form, setForm] = useState({
-    name: User.name,
+    name: session?.user.name,
     phone: User.phone,
     address: User.address,
-    email: User.email,
+    email: session?.user.email,
   });
 
   useEffect(() => {
@@ -129,6 +129,8 @@ export function AddInfo({ onClose, User }) {
           <h2 className="text-xl font-bold">Update Your Info</h2>
         </div>
         <div className="space-y-4 gap-1 p-4 text-black">
+          <div className="flex flex-col space-y-2">        
+          </div>
           <div className="flex flex-col space-y-2">
             <label className="text-gray-700 dark:text-gray-200" htmlFor="name">
               Name

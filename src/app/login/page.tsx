@@ -3,7 +3,9 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import React, { useEffect } from "react";
 
 const Loginpage = () => {
-  const { data: session, status } = useSession();
+  const { data: session, status } = useSession(); 
+  
+
 
   return (
     <div>
@@ -16,8 +18,8 @@ const Loginpage = () => {
             </p>
           </div>
           <button
-            onClick={() => {
-              signIn("google");
+            onClick={() =>{
+              signIn('google', { callbackUrl: '/' });
             }}
             className="w-full max-w-[300px] border p-2 rounded-md"
           >

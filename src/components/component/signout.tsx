@@ -6,7 +6,7 @@ const SignoutButton = () => {
   const { data: session, status } = useSession();
   return status === "authenticated" ? (
     <button
-      className="fixed top-5 right-5 border  rounded-md p-2"
+      className="border mx-5 p-1  rounded-md"
       onClick={() => signOut()}
     >
       Signout
