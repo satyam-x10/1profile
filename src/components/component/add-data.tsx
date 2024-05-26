@@ -63,7 +63,10 @@ export function AddLink({ onClose }: { onClose: any }) {
     </div>
   );
 }
-export function AddInfo({ onClose }: { onClose: any }) {
+
+export function AddInfo({ onClose, User }: { onClose: any; User: any }) {
+  const updateInfo = () => {};
+
   return (
     <div className="w-full h-full fixed inset-0 bg-black/50 flex items-center justify-center z-50 overflow-y-auto">
       <Card className="w-full h-full bg-white dark:bg-gray-900 rounded-lg shadow-lg">
@@ -74,7 +77,7 @@ export function AddInfo({ onClose }: { onClose: any }) {
           Close
         </button>
         <CardHeader>
-          <CardTitle>Update Ur Info</CardTitle>
+          <CardTitle>Update Your Info</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 gap-1 p-4 text-black">
           <div className="flex flex-col space-y-2">
@@ -86,7 +89,7 @@ export function AddInfo({ onClose }: { onClose: any }) {
               type="text"
               id="name"
               name="name"
-              placeholder="Enter your name"
+              defaultValue={User.name}
             />
           </div>
           <div className="flex flex-col space-y-2">
@@ -116,21 +119,9 @@ export function AddInfo({ onClose }: { onClose: any }) {
               placeholder="Enter your address"
             />
           </div>
-          <div className="flex flex-col space-y-2">
-            <label className="text-gray-700 dark:text-gray-200" htmlFor="email">
-              Email
-            </label>
-            <input
-              className="border p-2 rounded-md"
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter your email"
-            />
-          </div>
         </CardContent>
         <CardFooter className="flex justify-end">
-          <Button>Update</Button>
+          <Button onClick={updateInfo}>Update</Button>
         </CardFooter>
       </Card>
     </div>

@@ -1,9 +1,9 @@
 "use client";
 import { signIn, signOut, useSession } from "next-auth/react";
 import React, { useEffect } from "react";
+
 const Loginpage = () => {
   const { data: session, status } = useSession();
-  console.log(session);
 
   return (
     <div>
@@ -28,7 +28,7 @@ const Loginpage = () => {
         <div className="flex flex-col items-center justify-center min-h-[100dvh] gap-6 px-4">
           <div className="space-y-2 text-center">
             <h1 className="text-3xl font-bold">
-              Welcome Back! {session?.user?.name}{" "}
+              Welcome Back! {session?.user?.name}
             </h1>
             <p className="text-gray-500 dark:text-gray-400">
               Lets find your person

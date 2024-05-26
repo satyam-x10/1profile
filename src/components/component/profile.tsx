@@ -5,8 +5,37 @@ import Card from "../card";
 import { useSession } from "next-auth/react";
 import { AddLink, AddInfo } from "./add-data";
 import { useEffect, useState } from "react";
+
 export function Profile() {
   const { data: session } = useSession();
+  const [User, setUser] = useState("Loading...");
+  useEffect(() => {
+    async function fetchData() {
+      console.log("session", session?.user?.email);
+
+      const res = await fetch(
+        `/api/user?email=${encodeURIComponent(session?.user?.email || "")}`,
+      ); // Pass email as a query parameter
+      if (res.ok) {
+        const data = await res.json();
+        console.log("data", data);
+        setUser(data.data);
+      }
+
+      // const res = await fetch('./api/user', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({ Name: 'satyam', Email: 'satyamx40@gmail.com' }),
+      // });
+
+      console.log(res);
+    }
+    fetchData();
+  }, [session]);
+
+  // const { data: session } = useSession();
 
   const [openCard, setOpenCard] = useState(false);
   const handleCloseCard = () => {
@@ -41,7 +70,7 @@ export function Profile() {
             Add new Link
           </button>
           <button
-            className="float-end border p-2 rounded-xl m-2"
+            className={`float-end p-2 rounded-xl m-2 border ${!User.verified ? " border-red-600" : "border-green-600"}`}
             onClick={() => {
               setOpenInfo(true);
             }}
@@ -57,13 +86,13 @@ export function Profile() {
           )}
           {openInfo && (
             <div className="w-full h-full">
-              <AddInfo onClose={handleCloseInfo} />
+              <AddInfo onClose={handleCloseInfo} User={User} />
             </div>
           )}
         </div>
         <div className="px-6 pt-16 pb-6 text-center">
           <h2 className="text-2xl font-bold">
-            {session?.user?.name || "Name"}
+            {User.name || session?.user?.name || "Name"}
           </h2>
           <p className="text-gray-500 dark:text-gray-400 mt-2">
             {session?.user?.email?.split("@")[0] || "Email"}
