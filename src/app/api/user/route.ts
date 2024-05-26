@@ -9,7 +9,6 @@ export async function GET(request: any) {
     const url = new URL(request.url);
     const email = url.searchParams.get("email");
 
-    console.log("email", email);
 
     const data = await User.findOne({ email }); // Find user by email
     if (!data) {
@@ -21,7 +20,7 @@ export async function GET(request: any) {
     console.error("Error fetching data:", error);
     return NextResponse.json(
       { message: "Error fetching data" },
-      { status: 500 },
+      { status: 500 }
     );
   } finally {
     // Optional: Close the MongoDB connection if you open it manually
@@ -29,7 +28,6 @@ export async function GET(request: any) {
 }
 
 export async function POST(request: Request) {
-  console.log("posting");
 
   try {
     await connectToMongoDB();
@@ -39,7 +37,7 @@ export async function POST(request: Request) {
     const user = await User.findOneAndUpdate(
       { email: Email },
       { $setOnInsert: { name: Name, email: Email } },
-      { upsert: true, new: false },
+      { upsert: true, new: false }
     );
 
     return NextResponse.json({ message: "user created successfully!" });
