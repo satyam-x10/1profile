@@ -23,6 +23,14 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <button
+        className="border p-2 rounded-md fixed left-0 top-0 m-2"
+        onClick={() => {
+          window.location.href = "/profile";
+        }}
+      >
+        Profile
+      </button>
       <div>
         {session ? (
           <div className="flex flex-col items-center space-x-4 gap-2">
