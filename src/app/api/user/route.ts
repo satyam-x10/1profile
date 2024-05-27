@@ -35,7 +35,15 @@ export async function POST(request: Request) {
 
     const user = await User.findOneAndUpdate(
       { email: Email },
-      { $set: { name: Name, phone: Phone, address: Address, email:Email, verified: true } },
+      {
+        $set: {
+          name: Name,
+          phone: Phone,
+          address: Address,
+          email: Email,
+          verified: true,
+        },
+      },
       { upsert: true, new: false },
     );
     console.log(user);

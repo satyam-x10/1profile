@@ -20,6 +20,12 @@ const userSchema = new Schema({
     type: String,
     required: false,
   },
+  socialLinks: {
+    type: Map,
+    of: String,
+    required: false,
+  },
+
   verified: {
     type: Boolean,
     required: true,
