@@ -1,9 +1,10 @@
+// @ts-ignore
 import { connectToMongoDB } from "@/lib/db";
 import User from "@/lib/models/user";
 import { log } from "console";
 import { NextResponse } from "next/server";
 
-export async function POST(request) {
+export async function POST(request: Request) {
   try {
     await connectToMongoDB(); // Ensure you're connected to MongoDB
     const body = await request.json(); // Parse JSON data from request body
