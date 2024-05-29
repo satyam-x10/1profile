@@ -1,6 +1,6 @@
 import { connectToMongoDB } from "@/lib/db";
 import User from "@/lib/models/user";
-import { log } from "console";
+import { error, log } from "console";
 import { NextResponse } from "next/server";
 
 export async function GET(request: any) {
@@ -8,18 +8,40 @@ export async function GET(request: any) {
     await connectToMongoDB();
     const url = new URL(request.url);
     const email = url.searchParams.get("email");
+    const id = url.searchParams.get("id");
+    var data;
+    if (email) {
+      console.log("email", email);
 
-    const data = await User.findOne({ email }); // Find user by email
-    if (!data) {
-      return NextResponse.json({ message: "User not found" }, { status: 404 });
+      data = await User.findOne({ email }); // Find user by email
+      if (!data) {
+        return NextResponse.json(
+          { message: "User not found" },
+          { status: 404 }
+        );
+      }
     }
+
+    if (id) {
+      console.log("id", id);
+
+      data = await User.findById(id).select('name contact socialLinks').lean();; // Find user by id
+      if (!data) {
+        return NextResponse.json(
+          { message: "User not found" },
+          { status: 404 }
+        );
+      }
+    }
+
+    console.log("data", email ? "email" : "id", data);
 
     return NextResponse.json({ data });
   } catch (error) {
     console.error("Error fetching data:", error);
     return NextResponse.json(
       { message: "Error fetching data" },
-      { status: 500 },
+      { status: 500 }
     );
   } finally {
     // Optional: Close the MongoDB connection if you open it manually
@@ -44,7 +66,7 @@ export async function POST(request: Request) {
           verified: true,
         },
       },
-      { upsert: true, new: false },
+      { upsert: true, new: false }
     );
     console.log(user);
 
