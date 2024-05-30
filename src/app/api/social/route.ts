@@ -2,7 +2,7 @@ import { connectToMongoDB } from "@/lib/db";
 import User from "@/lib/models/user";
 import { NextResponse } from "next/server";
 
-export async function GET(request) {
+export async function GET(request:Request) {
   await connectToMongoDB();
 
   const { searchParams } = new URL(request.url);
