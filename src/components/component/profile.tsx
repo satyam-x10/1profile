@@ -60,7 +60,7 @@ export function Profile() {
             }}
             className=" w-24 h-24 border-4 border-white dark:border-gray-950 hover:cursor-pointer"
           >
-            <AvatarImage alt="@shadcn" src={session?.user?.image ?? ""} />
+            <AvatarImage alt="@shadcn" src={User.image} />
             <AvatarFallback>{session?.user?.name?.split("")[0]}</AvatarFallback>
           </Avatar>
 
@@ -83,18 +83,23 @@ export function Profile() {
           <div className="absolute top-2 right-2 bg-slate-800 m-0 p-0 rounded-2xl">
             <button
               className="float-end border p-2 rounded-xl m-2 flex flex-row gap-2"
-              onClick={() => {
-              }}
+              onClick={() => {}}
             >
               <div>{User?._id}</div>
-              <CopyIcon onClick={() => {
-                navigator.clipboard.writeText(User?._id).then(() => {
-                  console.log('Text copied to clipboard');
-                  // Optionally, you can display a toast notification or some feedback to the user
-                }).catch(err => {
-                  console.error('Failed to copy text: ', err);
-                })
-              }} className="h-full border p-1 rounded-lg" />
+              <CopyIcon
+                onClick={() => {
+                  navigator.clipboard
+                    .writeText(User?._id)
+                    .then(() => {
+                      console.log("Text copied to clipboard");
+                      // Optionally, you can display a toast notification or some feedback to the user
+                    })
+                    .catch((err) => {
+                      console.error("Failed to copy text: ", err);
+                    });
+                }}
+                className="h-full border p-1 rounded-lg"
+              />
             </button>
             <button
               className="float-end border p-2 rounded-xl m-2"
@@ -104,15 +109,16 @@ export function Profile() {
             >
               Add new Link
             </button>
-            {User && <button
-              className={`float-end p-2 rounded-xl m-2 border ${!User.verified ? " border-red-600" : "border-green-600"}`}
-              onClick={() => {
-                setOpenInfo(true);
-              }}
-            >
-              Update Info
-            </button>}
-
+            {User && (
+              <button
+                className={`float-end p-2 rounded-xl m-2 border ${!User.verified ? " border-red-600" : "border-green-600"}`}
+                onClick={() => {
+                  setOpenInfo(true);
+                }}
+              >
+                Update Info
+              </button>
+            )}
           </div>
         </div>
 

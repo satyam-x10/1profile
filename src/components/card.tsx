@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CopyIcon, TwitterIcon } from "@/components/icons";
 
-const Card = ({ link}:{link:any}) => {
+const Card = ({ link }: { link: any }) => {
   return (
     <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 flex flex-wrap items-center gap-4 hover:cursor-pointer">
       <div className="bg-blue-500 text-white rounded-full p-2">
@@ -17,7 +17,8 @@ const Card = ({ link}:{link:any}) => {
           </Link>
         </p>
       </div>
-      <Button onClick={() => navigator.clipboard.writeText(link[1])}
+      <Button
+        onClick={() => navigator.clipboard.writeText(link[1])}
         className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 ml-auto"
         size="icon"
         variant="ghost"

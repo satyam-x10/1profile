@@ -15,7 +15,9 @@ const SocialPage: React.FC<PageProps> = ({ params }) => {
   const [Socialdata, setSocialdata] = useState(null);
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch(`/api/user?id=${encodeURIComponent(params.social)}`);
+      const res = await fetch(
+        `/api/user?id=${encodeURIComponent(params.social)}`,
+      );
       if (res.ok) {
         const data = await res.json();
         setSocialdata(data);
@@ -23,15 +25,12 @@ const SocialPage: React.FC<PageProps> = ({ params }) => {
     }
     fetchData();
   }, []);
-  return <div>
-  {
-    Socialdata && <SocialProfile Socialdata={Socialdata.data} />
-  }
-  {
-    !Socialdata && <div>Loading...</div>
-  }
-  </div >
-  ;
+  return (
+    <div>
+      {Socialdata && <SocialProfile Socialdata={Socialdata.data} />}
+      {!Socialdata && <div>Loading...</div>}
+    </div>
+  );
 };
 
 export default SocialPage;

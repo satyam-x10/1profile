@@ -3,10 +3,13 @@ const Schema = mongoose.Schema;
 // const { v4: uuidv4 } = require('uuid');
 
 const userSchema = new Schema({
-  
   name: {
     type: String,
     required: true,
+  },
+  image: {
+    type: String,
+    required: false,
   },
 
   email: {

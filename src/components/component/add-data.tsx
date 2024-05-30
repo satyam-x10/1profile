@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import Platforms from "../../../public/platforms";
 import { useSession } from "next-auth/react";
 
-export function AddLink({ onClose }:{onClose: () => void}) {
+export function AddLink({ onClose }: { onClose: () => void }) {
   const [platform, setPlatform] = useState("");
   const [link, setLink] = useState("");
   const { data: session } = useSession();
@@ -86,11 +86,17 @@ export function AddLink({ onClose }:{onClose: () => void}) {
   );
 }
 
-export function AddInfo({ onClose, User }:{onClose: () => void, User: Object}) {
+export function AddInfo({
+  onClose,
+  User,
+}: {
+  onClose: () => void;
+  User: Object;
+}) {
   const [loading, setLoading] = useState(false);
   const [uploaded, setUploaded] = useState(false);
   const { data: session } = useSession();
-  
+
   const [form, setForm] = useState({
     name: session?.user.name,
     phone: User.phone,
@@ -126,6 +132,7 @@ export function AddInfo({ onClose, User }:{onClose: () => void, User: Object}) {
           Phone: form.phone,
           Address: form.address,
           Email: form.email,
+          Image: session?.user.image,
         }),
       });
 
