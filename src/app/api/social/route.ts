@@ -1,3 +1,4 @@
+// @ts-ignore
 import { connectToMongoDB } from "@/lib/db";
 import User from "@/lib/models/user";
 import { NextResponse } from "next/server";

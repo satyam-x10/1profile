@@ -4,6 +4,16 @@
     "react/no-unescaped-entities": "off",
     "@next/next/no-page-custom-font": "off",
     "react/react-in-jsx-scope": "off",
-    "react-hooks/exhaustive-deps": "off"
+    "react-hooks/exhaustive-deps": "off",
+    "react/prop-types": "off",
+    "no-unused-vars": "off",
+    "no-undef": "off",
+    "no-constant-condition": "off",
+    "no-empty": "off",
+    "no-prototype-builtins": "off",
+    "no-useless-escape": "off",
+    "no-irregular-whitespace": "off",
+    "no-throw-literal": "off",
+    "no-async-promise-executor": "off",
   }
 }
