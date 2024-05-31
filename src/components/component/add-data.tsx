@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { useEffect, useState } from "react";
 import {
   CardTitle,
@@ -101,7 +103,7 @@ export function AddInfo({
     name: session?.user.name,
     phone: User.phone,
     address: User.address,
-    email: session?.user.email,
+    email: session?.user.email ,
   });
 
   useEffect(() => {

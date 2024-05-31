@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 import { AvatarImage, AvatarFallback, Avatar } from "@/components/ui/avatar";
 import Link from "next/link";

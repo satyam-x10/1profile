@@ -7,7 +7,7 @@ export async function GET(request:Request) {
   await connectToMongoDB();
 
   const { searchParams } = new URL(request.url);
-  const queryObject = {};
+  let queryObject: { [key: string]: any } = {};
 
   // Extract query parameters
   const profileLink = searchParams.get("profile");

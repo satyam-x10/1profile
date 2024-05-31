@@ -27,7 +27,7 @@ const SocialPage: React.FC<PageProps> = ({ params }) => {
   }, []);
   return (
     <div>
-      {Socialdata && <SocialProfile Socialdata={Socialdata.data} />}
+      {Socialdata && <SocialProfile Socialdata={(Socialdata as any).data} />}
       {!Socialdata && <div>Loading...</div>}
     </div>
   );
