@@ -1,13 +1,16 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { CopyIcon, TwitterIcon } from "@/components/icons";
+import { CopyIcon } from "@/components/icons"; // Import the specific icons
+import { getIcon } from "@/components/icons"; // Import the getIcon function
 
 const Card = ({ link }: { link: any }) => {
+  const Icon = getIcon(link[0]); // Call getIcon with the icon name from the link
+
   return (
     <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 flex flex-wrap items-center gap-4 hover:cursor-pointer">
       <div className="bg-blue-500 text-white rounded-full p-2">
-        <TwitterIcon className="w-5 h-5" />
+        {Icon && <Icon className="w-5 h-5" />} {/* Render the icon if it's available */}
       </div>
       <div className="flex-1 min-w-0">
         <h3 className="text-lg font-semibold truncate">{link[0]}</h3>

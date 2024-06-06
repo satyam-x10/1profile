@@ -22,7 +22,7 @@ export default function Home() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between p-8 md:p-16">
       <button
         className="border p-2 rounded-md fixed left-0 top-0 m-2"
         onClick={() => {
